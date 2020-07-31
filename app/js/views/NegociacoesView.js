@@ -2,10 +2,10 @@ class NegociacoesView {
     constructor(seletor) {
         this._elemento = document.querySelector(seletor);
     }
-    update() {
-        this._elemento.innerHTML = this.template();
+    update(model) {
+        this._elemento.innerHTML = this.template(model);
     }
-    template() {
+    template(model) {
         return `
         <table class="table table-hover table-bordered">
             <thead>
@@ -18,6 +18,14 @@ class NegociacoesView {
             </thead>
 
             <tbody>
+               ${model.paraArray().map(n => `
+                        <tr>
+                            <td>${n.data.getDate()}/${n.data.getMonth() + 1}/${n.data.getFullYear()}</td>
+                            <td>${n.quantidade}</td>
+                            <td>${n.valor}</td>
+                            <td>${n.volume}</td>
+                        </tr>
+                   `).join('')}
             </tbody>
 
             <tfoot>
