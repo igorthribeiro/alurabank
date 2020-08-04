@@ -1,4 +1,4 @@
-class Negociacao {
+export class Negociacao {
 
     //private _inputData:any; //quando o tipo não é definido
 
