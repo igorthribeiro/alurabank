@@ -3,7 +3,7 @@ export abstract class View<T> {
     private _elemento: JQuery;
     private _escapar: boolean;
 
-    constructor(seletor: string, escapar?: boolean) { //? indica parâmetro opicional (recebe undefined) devem ficar por último
+    constructor(seletor: string, escapar: boolean = false) { //? indica parâmetro opicional (recebe undefined) devem ficar por último
         this._elemento = $(seletor);
         this._escapar = escapar;
     }

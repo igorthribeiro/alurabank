@@ -10,6 +10,6 @@ export class Negociacoes {
     }
 
     paraArray():Negociacao[] { //boa prática
-        return [].concat(this._negociacoes); //encapsulamento -> imutável
+        return ([] as Negociacao[]).concat(this._negociacoes); //encapsulamento -> imutável
     }
 }
