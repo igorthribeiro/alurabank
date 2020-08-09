@@ -1,6 +1,5 @@
 import { Negociacao } from './Negociacao';
 
-import { logarTempoDeExecucao } from '../helpers/decorators/index';
 export class Negociacoes {
 
     private _negociacoes:Negociacao[] = []
@@ -11,7 +10,6 @@ export class Negociacoes {
     }
 
     
-    @logarTempoDeExecucao()
     paraArray():Negociacao[] { //boa prática
         return ([] as Negociacao[]).concat(this._negociacoes); //encapsulamento -> imutável
     }
