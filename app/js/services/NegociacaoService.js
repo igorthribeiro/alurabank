@@ -11,7 +11,7 @@ System.register(["../models/index"], function (exports_1, context_1) {
         execute: function () {
             NegociacaoService = class NegociacaoService {
                 opterNegociacoes(handler) {
-                    return fetch('http://localhost:8080/dadosxxx')
+                    return fetch('http://localhost:8080/dados')
                         .then(res => handler(res))
                         .then(res => res.json())
                         .then((dados) => dados
