@@ -1,12 +1,11 @@
 import { Imprimivel } from './index';
 
-export class Negociacao extends Imprimivel {
+export class Negociacao implements Imprimivel {
 
     //private _inputData:any; //quando o tipo não é definido
 
 
     constructor(readonly data: Date, readonly quantidade: number, readonly valor: number) {
-        super();
         
         //o underline identifica (convenção) que os valor só poderão ser acessados por métodos
         
