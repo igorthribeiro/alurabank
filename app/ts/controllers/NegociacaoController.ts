@@ -44,7 +44,12 @@ export class NegociacaoController {
             parseInt(this._inputQuantidade.val()),
             parseFloat(this._inputValor.val())
         );
+        
+        negociacao.paraTexto();
+
         this._negociacoes.adiciona(negociacao);
+
+        this._negociacoes.paraTexto();
 
         this._negociacoesView.update(this._negociacoes);
         this._mensagemView.update('Negociação adicionada!');       

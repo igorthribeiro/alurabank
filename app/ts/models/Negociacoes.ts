@@ -13,4 +13,9 @@ export class Negociacoes {
     paraArray():Negociacao[] { //boa prática
         return ([] as Negociacao[]).concat(this._negociacoes); //encapsulamento -> imutável
     }
+
+    paraTexto(): void {
+        console.log('Impressão');
+        console.log(JSON.stringify(this._negociacoes));
+    }
 }
