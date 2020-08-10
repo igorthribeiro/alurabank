@@ -6,7 +6,8 @@ Outra forma de corrigir esse erro é, ao invés de mudar a sequencia de exporta�
 importar nas classes subsequentes de "index.ts", ou seja, importar da própria classe que
 possui o método.
 */
-export * from './Imprimivel'; 
+export * from './Imprimivel';
+export * from './Igualavel';  
 export * from './Negociacao';
 export * from './Negociacoes';
 export * from './NegociacaoParcial';
