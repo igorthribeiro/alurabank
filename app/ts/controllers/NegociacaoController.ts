@@ -1,7 +1,7 @@
 import { NegociacoesView, MensagemView } from '../views/index';
 import { Negociacoes, Negociacao, NegociacaoParcial } from '../models/index';
 import { domInject, meuDecoratorDeClasse, throttle } from '../helpers/decorators/index';
-import { NegociacaoService } from '../services/index';
+import { NegociacaoService, HandlerFunction } from '../services/index';
 
 let timer = 0;
 
@@ -56,7 +56,8 @@ export class NegociacaoController {
 
     @throttle()
     importaDados() {
-        function isOK(res: Response) {
+
+        const isOK: HandlerFunction = (res:Response) => {
             if (res.ok) {
                 return res;
             } else {
@@ -69,7 +70,7 @@ export class NegociacaoController {
             .then(negociacoes => {
                 negociacoes.forEach(negociacao =>
                      this._negociacoes.adiciona(negociacao));
-                     
+
                 this._negociacoesView.update(this._negociacoes);
             });
 
