@@ -29,8 +29,7 @@ System.register(["../views/index", "../models/index", "../helpers/decorators/ind
                     this._mensagemView = new index_1.MensagemView('#mensagemView');
                     this._negociacoesView.update(this._negociacoes);
                 }
-                adiciona(event) {
-                    event.preventDefault();
+                adiciona() {
                     let data = new Date(this._inputData.val().replace(/-/g, ','));
                     if (!this._ehDiaUtil(data)) {
                         this._mensagemView.update('Somente negociações em dias úteis, por favor!');
@@ -53,19 +52,16 @@ System.register(["../views/index", "../models/index", "../helpers/decorators/ind
                             throw new Error(res.statusText);
                         }
                     }
-                    clearTimeout(timer);
-                    timer = setTimeout(() => {
-                        fetch('http://localhost:8080/dados')
-                            .then(res => isOK(res))
-                            .then(res => res.json())
-                            .then((dados) => {
-                            dados
-                                .map(d => new index_2.Negociacao(new Date(), d.vezes, d.montante))
-                                .forEach(negociacao => this._negociacoes.adiciona(negociacao));
-                            this._negociacoesView.update(this._negociacoes);
-                        })
-                            .catch(err => console.log(err));
-                    }, 500);
+                    fetch('http://localhost:8080/dados')
+                        .then(res => isOK(res))
+                        .then(res => res.json())
+                        .then((dados) => {
+                        dados
+                            .map(d => new index_2.Negociacao(new Date(), d.vezes, d.montante))
+                            .forEach(negociacao => this._negociacoes.adiciona(negociacao));
+                        this._negociacoesView.update(this._negociacoes);
+                    })
+                        .catch(err => console.log(err));
                 }
             };
             __decorate([
@@ -77,6 +73,12 @@ System.register(["../views/index", "../models/index", "../helpers/decorators/ind
             __decorate([
                 index_3.domInject('#valor')
             ], NegociacaoController.prototype, "_inputValor", void 0);
+            __decorate([
+                index_3.throttle()
+            ], NegociacaoController.prototype, "adiciona", null);
+            __decorate([
+                index_3.throttle()
+            ], NegociacaoController.prototype, "importaDados", null);
             NegociacaoController = __decorate([
                 index_3.meuDecoratorDeClasse()
             ], NegociacaoController);
