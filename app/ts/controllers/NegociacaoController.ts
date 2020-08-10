@@ -127,4 +127,5 @@ enum DiaDaSemana {
 
                 this._negociacoesView.update(this._negociacoes);
             });
+    }
 */
