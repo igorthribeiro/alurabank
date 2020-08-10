@@ -1,5 +1,7 @@
-export function imprime(...objetos: any[]) {
+import { Imprimivel } from '../models/index';
 
-    objetos.forEach(objeto => objeto.paraTexto());
+export function imprime(...imprimiveis: Imprimivel[]) {
+
+    imprimiveis.forEach(imprimivel => imprimivel.paraTexto);
 
 }
